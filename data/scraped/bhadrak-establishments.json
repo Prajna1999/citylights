@@ -1,0 +1,1454 @@
+[
+  {
+    "id": "node/7210850811",
+    "name": "Bhadrak District Hospital",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Hospital Road, Near Naya Bazar, Buddha Vihar",
+      "district": "Bhadrak",
+      "state": "Odisha",
+      "pincode": "756101"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5025885,
+        21.0654838
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7210850811",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7210850811"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Hospital Road, Near Naya Bazar, Buddha Vihar",
+      "addr:postcode=756101",
+      "addr:state=Odisha",
+      "amenity=hospital",
+      "name=Bhadrak District Hospital",
+      "source=OpenGovernmentData"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7210850811,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256117",
+    "name": "Bhoomika Eye Hospital",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital",
+      "hospital"
+    ],
+    "address": {
+      "line": "Bhadrak",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5108149,
+        21.0777731
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256117",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256117"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Bhadrak",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=hospital",
+      "healthcare=hospital",
+      "name=Bhoomika Eye Hospital",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256117,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256091",
+    "name": "Dixit Clinic",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "clinic"
+    ],
+    "address": {
+      "line": "Bankashi",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5081153,
+        21.0716934
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256091",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256091"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Bankashi",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=clinic",
+      "name=Dixit Clinic",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256091,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256072",
+    "name": "Dr. B.K Sahu",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "By-Pass Road, Opposite To HDFC Bank",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5067189,
+        21.0714709
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256072",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256072"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=By-Pass Road, Opposite To HDFC Bank",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. B.K Sahu",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256072,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256054",
+    "name": "Dr. Benudhar Nayak",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors",
+      "doctor"
+    ],
+    "address": {
+      "line": "Dahanigadia Nagar, Chhapulia",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5113575,
+        21.0765344
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256054",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256054"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Dahanigadia Nagar, Chhapulia",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "healthcare=doctor",
+      "name=Dr. Benudhar Nayak",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256054,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256102",
+    "name": "Dr. Bhibuti Naik",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "Biju Patnaik Nagar, Samaraipur",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4928243,
+        21.053693
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256102",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256102"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Biju Patnaik Nagar, Samaraipur",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. Bhibuti Naik",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256102,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256079",
+    "name": "Dr. J K Mohanty & Jayasree Mohanty",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "Bhadrak",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5072257,
+        21.064312
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256079",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256079"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Bhadrak",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. J K Mohanty & Jayasree Mohanty",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256079,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256065",
+    "name": "Dr. Kamala Kanta Swain",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "Samaraipur",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4921154,
+        21.0546965
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256065",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256065"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Samaraipur",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. Kamala Kanta Swain",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256065,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256051",
+    "name": "Dr. Prafulla Kumar Nanda",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "River Bank Road, Naripur",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.497734,
+        21.0639813
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256051",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256051"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=River Bank Road, Naripur",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. Prafulla Kumar Nanda",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256051,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256074",
+    "name": "Dr. R K Nayak",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "Jagannathpur, College Road, Baudpur Village",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4873494,
+        21.0627035
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256074",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256074"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Jagannathpur, College Road, Baudpur Village",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. R K Nayak",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256074,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256110",
+    "name": "Dr. Ranjit Kumar Patra",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "SH 35, Prachi Nagar, Samaraipur",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4884523,
+        21.046983
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256110",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256110"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=SH 35, Prachi Nagar, Samaraipur",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. Ranjit Kumar Patra",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256110,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256081",
+    "name": "Dr. Satrughna Hati Clinic",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "clinic"
+    ],
+    "address": {
+      "line": "Naripur",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5019051,
+        21.0668365
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256081",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256081"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Naripur",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=clinic",
+      "name=Dr. Satrughna Hati Clinic",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256081,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/11137536264",
+    "name": "Dr. Satyabhama Das",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors",
+      "doctor"
+    ],
+    "owner_name": "Dr. Satyabhama Das",
+    "address": {
+      "line": "Bhadrak Bypass, Infront of Vishal Megamart",
+      "locality": "Bhadrak",
+      "district": "Bhadrak",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5079738,
+        21.0744701
+      ]
+    },
+    "hours": [
+      {
+        "note": "Mo-Su 08:00-20:00"
+      }
+    ],
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/11137536264",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/11137536264"
+    },
+    "tags": [
+      "addr:city=Bhadrak",
+      "addr:district=Bhadrak",
+      "addr:postcode=756100",
+      "addr:street=Bhadrak Bypass, Infront of Vishal Megamart",
+      "amenity=doctors",
+      "healthcare=doctor",
+      "healthcare:speciality=gynaecology",
+      "name=Dr. Satyabhama Das",
+      "opening_hours=Mo-Su 08:00-20:00",
+      "operator=Dr. Satyabhama Das"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 11137536264,
+      "opening_hours_raw": "Mo-Su 08:00-20:00"
+    }
+  },
+  {
+    "id": "node/7701256087",
+    "name": "Dr. U K Jena",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "doctors"
+    ],
+    "address": {
+      "line": "Bankashi",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5050409,
+        21.0709749
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256087",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256087"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Bankashi",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=doctors",
+      "name=Dr. U K Jena",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256087,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/4552969518",
+    "name": "Guesthouse",
+    "category_id": "hospitality",
+    "category_name": "Hotels & hospitality",
+    "subcategory": [
+      "guest_house"
+    ],
+    "address": {
+      "line": "State Highway",
+      "district": "Bhadrak Rural",
+      "state": "Odisha",
+      "pincode": "756100",
+      "country": "India"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5052746,
+        21.0673108
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:41.487Z",
+    "updated_at": "2026-08-21T17:10:41.488Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/4552969518",
+      "scraped_at": "2026-08-21T17:10:41.488Z",
+      "url": "https://www.openstreetmap.org/node/4552969518"
+    },
+    "tags": [
+      "name=Guesthouse",
+      "tourism=guest_house"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 4552969518,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256058",
+    "name": "Himadri Hospital",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Samaraipur",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756181"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4894777,
+        21.041842
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256058",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256058"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Samaraipur",
+      "addr:postcode=756181",
+      "addr:state=Odhisa",
+      "amenity=hospital",
+      "name=Himadri Hospital",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256058,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "way/292421254",
+    "name": "Hotel Orion",
+    "category_id": "hospitality",
+    "category_name": "Hotels & hospitality",
+    "subcategory": [
+      "hotel"
+    ],
+    "address": {},
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4923732,
+        21.0544034
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:44.536Z",
+    "updated_at": "2026-08-21T17:10:44.536Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "way/292421254",
+      "scraped_at": "2026-08-21T17:10:44.536Z",
+      "url": "https://www.openstreetmap.org/way/292421254"
+    },
+    "tags": [
+      "building=yes",
+      "name=Hotel Orion",
+      "tourism=hotel"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "way",
+      "osm_id": 292421254,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/11145366105",
+    "name": "Hotel Sampark",
+    "category_id": "hospitality",
+    "category_name": "Hotels & hospitality",
+    "subcategory": [
+      "hotel"
+    ],
+    "phone": "+917327835223",
+    "address": {
+      "line": "Bhadrak Bypass",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5073262,
+        21.0725384
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/11145366105",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/11145366105"
+    },
+    "tags": [
+      "addr:postcode=756100",
+      "addr:street=Bhadrak Bypass",
+      "internet_access=wlan",
+      "name=Hotel Sampark",
+      "phone=+917327835223",
+      "tourism=hotel"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 11145366105,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256052",
+    "name": "Omm Sai Hospital",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital",
+      "hospital"
+    ],
+    "address": {
+      "line": "Patharahadi Street, Charampa",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756101"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5203228,
+        21.0871852
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256052",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256052"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Patharahadi Street, Charampa",
+      "addr:postcode=756101",
+      "addr:state=Odhisa",
+      "amenity=hospital",
+      "healthcare=hospital",
+      "name=Omm Sai Hospital",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256052,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7210851415",
+    "name": "Padhi Healthcare and Research Center",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "River Bank Road, Near Naya Bazaar, Naripur",
+      "district": "Bhadrak",
+      "state": "Odisha",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5013641,
+        21.0670332
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7210851415",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7210851415"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=River Bank Road, Near Naya Bazaar, Naripur",
+      "addr:postcode=756100",
+      "addr:state=Odisha",
+      "amenity=hospital",
+      "name=Padhi Healthcare and Research Center",
+      "source=OpenGovernmentData"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7210851415,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/6239190885",
+    "name": "Prasad By-Pass",
+    "category_id": "restaurant-eatery",
+    "category_name": "Restaurant & eatery",
+    "subcategory": [
+      "restaurant"
+    ],
+    "address": {
+      "line": "State Highway",
+      "district": "Bhadrak Rural",
+      "state": "Odisha",
+      "pincode": "756100",
+      "country": "India"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5066461,
+        21.0715764
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/6239190885",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/6239190885"
+    },
+    "tags": [
+      "amenity=restaurant",
+      "name=Prasad By-Pass"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 6239190885,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256101",
+    "name": "Purana Bazar Hospital",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Purana Bazar",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5181576,
+        21.0506893
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256101",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256101"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Purana Bazar",
+      "addr:postcode=756100",
+      "addr:state=Odhisa",
+      "amenity=hospital",
+      "name=Purana Bazar Hospital",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256101,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7213903882",
+    "name": "Raghabananda Eye Hospital",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Bhadrak",
+      "district": "Bhadrak",
+      "state": "Odisha",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5074762,
+        21.0720877
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7213903882",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7213903882"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Bhadrak",
+      "addr:postcode=756100",
+      "addr:state=Odisha",
+      "addr:subdistrict=Bhadrak Rural P.S.",
+      "amenity=hospital",
+      "name=Raghabananda Eye Hospital",
+      "source=OpenGovernmentData"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7213903882,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256108",
+    "name": "Sai Bharadwaj Hospital",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Mathasahi, Gabasahi",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756101"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4970983,
+        21.0681652
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256108",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256108"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Mathasahi, Gabasahi",
+      "addr:postcode=756101",
+      "addr:state=Odhisa",
+      "amenity=hospital",
+      "name=Sai Bharadwaj Hospital",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256108,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7068377991",
+    "name": "Sai Hospital, Bhadrak",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Samraipur, Po :- Gelpur",
+      "district": "Bhadrak",
+      "state": "Odisha",
+      "pincode": "756181"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4931695,
+        21.0529746
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7068377991",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7068377991"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Samraipur, Po :- Gelpur",
+      "addr:postcode=756181",
+      "addr:state=Odisha",
+      "amenity=hospital",
+      "name=Sai Hospital, Bhadrak",
+      "source=OpenGovernmentData"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7068377991,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7068857184",
+    "name": "Salandi Hopsital - Bhadrak",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Motel Chhak,Nh -5 Salndi Lane, Motel Square",
+      "district": "Bhadrak",
+      "state": "Odisha",
+      "pincode": "756101"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4964261,
+        21.0705952
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7068857184",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7068857184"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Motel Chhak,Nh -5 Salndi Lane, Motel Square",
+      "addr:postcode=756101",
+      "addr:state=Odisha",
+      "amenity=hospital",
+      "name=Salandi Hopsital - Bhadrak",
+      "source=OpenGovernmentData"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7068857184,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7079057929",
+    "name": "Subham Health Care",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Naya Bazar",
+      "district": "Bhadrak",
+      "state": "Odisha",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.5016323,
+        21.0647805
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7079057929",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7079057929"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Naya Bazar",
+      "addr:postcode=756100",
+      "addr:state=Odisha",
+      "amenity=hospital",
+      "name=Subham Health Care",
+      "source=OpenGovernmentData"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7079057929,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/7701256084",
+    "name": "Subham Healthcare and Research Centre",
+    "category_id": "clinic",
+    "category_name": "Clinics & doctors",
+    "subcategory": [
+      "hospital"
+    ],
+    "address": {
+      "line": "Gabasahi",
+      "district": "Bhadrak",
+      "state": "Odhisa",
+      "pincode": "756101"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.4932776,
+        21.0664612
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/7701256084",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/7701256084"
+    },
+    "tags": [
+      "addr:district=Bhadrak",
+      "addr:full=Gabasahi",
+      "addr:postcode=756101",
+      "addr:state=Odhisa",
+      "amenity=hospital",
+      "name=Subham Healthcare and Research Centre",
+      "source=Local Knowledge"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 7701256084,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/14017076018",
+    "name": "Tattva Coffee",
+    "category_id": "restaurant-eatery",
+    "category_name": "Restaurant & eatery",
+    "subcategory": [
+      "cafe"
+    ],
+    "phone": "9112061133",
+    "address": {
+      "line": "Mohanty's Hub , Beside Ather Electric Scooter Showroom",
+      "locality": "Bhadrak",
+      "district": "Bhadrak",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.498359,
+        21.0716354
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/14017076018",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://tatva.coffee/"
+    },
+    "tags": [
+      "addr:city=Bhadrak",
+      "addr:district=Bhadrak",
+      "addr:postcode=756100",
+      "addr:street=Mohanty's Hub , Beside Ather Electric Scooter Showroom",
+      "air_conditioning=yes",
+      "amenity=cafe",
+      "cuisine=coffee_shop;pizza;sandwich",
+      "internet_access=yes",
+      "name=Tattva Coffee",
+      "phone=9112061133",
+      "website=https://tatva.coffee/"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 14017076018,
+      "opening_hours_raw": null
+    }
+  },
+  {
+    "id": "node/11137508579",
+    "name": "Vishal Mega Mart",
+    "category_id": "services",
+    "category_name": "Services",
+    "subcategory": [
+      "mall"
+    ],
+    "owner_name": "Vishal Mega Mart",
+    "address": {
+      "line": "Bhadrak Bypass",
+      "locality": "Bhadrak",
+      "district": "Bhadrak",
+      "pincode": "756100"
+    },
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        86.508892,
+        21.0742487
+      ]
+    },
+    "status": "active",
+    "last_verified_at": null,
+    "created_at": "2026-08-21T17:10:42.611Z",
+    "updated_at": "2026-08-21T17:10:42.611Z",
+    "source": {
+      "provider": "openstreetmap",
+      "place_id": "node/11137508579",
+      "scraped_at": "2026-08-21T17:10:42.611Z",
+      "url": "https://www.openstreetmap.org/node/11137508579"
+    },
+    "tags": [
+      "addr:city=Bhadrak",
+      "addr:district=Bhadrak",
+      "addr:postcode=756100",
+      "addr:street=Bhadrak Bypass",
+      "air_conditioning=yes",
+      "brand=vishal Mega Mart",
+      "name=Vishal Mega Mart",
+      "operator=Vishal Mega Mart",
+      "payment:cards=yes",
+      "payment:cash=yes",
+      "payment:credit_cards=yes",
+      "payment:mastercard=yes",
+      "payment:notes=yes",
+      "payment:visa=yes",
+      "shop=mall"
+    ],
+    "meta": {
+      "is_scraped": true,
+      "requires_verification": true,
+      "osm_type": "node",
+      "osm_id": 11137508579,
+      "opening_hours_raw": null
+    }
+  }
+]

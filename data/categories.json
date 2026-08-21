@@ -1,0 +1,21 @@
+[
+  { "id": "food-groceries", "name": "Food & groceries", "slug": "food-groceries", "icon": "✦", "sort_order": 1 },
+  { "id": "restaurant-eatery", "name": "Restaurant & eatery", "slug": "restaurant-eatery", "icon": "☕", "sort_order": 2 },
+  { "id": "sweets-bakery", "name": "Sweets & bakery", "slug": "sweets-bakery", "icon": "◍", "sort_order": 3 },
+  { "id": "fashion-garment", "name": "Fashion & garment", "slug": "fashion-garment", "icon": "◌", "sort_order": 4 },
+  { "id": "tailoring", "name": "Tailoring", "slug": "tailoring", "icon": "✂", "sort_order": 5 },
+  { "id": "home-living", "name": "Home & living", "slug": "home-living", "icon": "⌂", "sort_order": 6 },
+  { "id": "electronics-mobile", "name": "Electronics & mobile", "slug": "electronics-mobile", "icon": "▤", "sort_order": 7 },
+  { "id": "pharmacy", "name": "Pharmacy & health", "slug": "pharmacy", "icon": "+", "sort_order": 8 },
+  { "id": "clinic", "name": "Clinics & doctors", "slug": "clinic", "icon": "⚕", "sort_order": 9 },
+  { "id": "gym-fitness", "name": "Gym & fitness", "slug": "gym-fitness", "icon": "▥", "sort_order": 10 },
+  { "id": "jewellery", "name": "Jewellery", "slug": "jewellery", "icon": "◆", "sort_order": 11 },
+  { "id": "stationery", "name": "Stationery & books", "slug": "stationery", "icon": "✎", "sort_order": 12 },
+  { "id": "services", "name": "Services", "slug": "services", "icon": "↗", "sort_order": 13 },
+  { "id": "hospitality", "name": "Hotels & hospitality", "slug": "hospitality", "icon": "☗", "sort_order": 14 },
+  { "id": "education", "name": "Education", "slug": "education", "icon": "✎", "sort_order": 15 },
+  { "id": "religious", "name": "Religious places", "slug": "religious", "icon": "☸", "sort_order": 16 },
+  { "id": "transport", "name": "Transport & travel", "slug": "transport", "icon": "➤", "sort_order": 17 },
+  { "id": "bank-finance", "name": "Bank & finance", "slug": "bank-finance", "icon": "₹", "sort_order": 18 },
+  { "id": "hospital", "name": "Hospitals", "slug": "hospital", "icon": "⚕", "sort_order": 19 }
+]

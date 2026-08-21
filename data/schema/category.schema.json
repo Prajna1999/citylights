@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Haat category list",
+  "description": "Fixed, curated category list for the Bhadrak directory. Categories are controlled vocabulary, never free text.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["id", "name", "slug", "icon", "sort_order"],
+    "properties": {
+      "id": { "type": "string" },
+      "name": { "type": "string" },
+      "slug": { "type": "string" },
+      "icon": { "type": "string" },
+      "sort_order": { "type": "integer" }
+    }
+  }
+}

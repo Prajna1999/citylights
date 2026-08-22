@@ -1,0 +1,34 @@
+[
+  {
+    "id": "r1",
+    "shopName": "Maa Mangala Stores",
+    "body": "Closed for the last two weeks, the shutters were down.",
+    "phone": "98765 12340",
+    "status": "open",
+    "createdAt": "2026-08-22T03:44:00.000Z"
+  },
+  {
+    "id": "r2",
+    "shopName": "Kalinga Mobile Point",
+    "body": "Phone number on the listing is out of service.",
+    "phone": "—",
+    "status": "open",
+    "createdAt": "2026-08-21T13:10:00.000Z"
+  },
+  {
+    "id": "r3",
+    "shopName": "Sahoo Saree Centre",
+    "body": "Moved to the new market building near the bus stand.",
+    "phone": "91234 56789",
+    "status": "open",
+    "createdAt": "2026-08-20T06:25:00.000Z"
+  },
+  {
+    "id": "r4",
+    "shopName": "Salandi Home Needs",
+    "body": "Timings changed, now closes at 6 PM.",
+    "phone": "—",
+    "status": "resolved",
+    "createdAt": "2026-08-17T09:00:00.000Z"
+  }
+]

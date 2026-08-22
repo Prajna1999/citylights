@@ -1,50 +1,56 @@
-"use client";
+import Link from "next/link";
+import { verifyShopAction } from "@/lib/actions";
+import { verificationQueue } from "@/lib/db";
 
-import { useState } from "react";
-import { verificationQueue, type VerificationItem } from "@/lib/admin";
+export const dynamic = "force-dynamic";
 
-export default function VerifyPage() {
-  const [queue, setQueue] = useState<VerificationItem[]>(verificationQueue);
-  const [done, setDone] = useState<string[]>([]);
+const PAGE_SIZE = 25;
 
-  const verify = (id: string) => setDone((d) => [...d, id]);
-  const skip = (id: string) => setQueue((q) => q.filter((item) => item.id !== id));
-
-  const pending = queue.filter((item) => !done.includes(item.id));
+export default async function VerifyPage() {
+  const queue = verificationQueue();
+  const visible = queue.slice(0, PAGE_SIZE);
 
   return (
     <div>
       <div className="admin-head">
         <h1>Verification queue</h1>
-        <p>{pending.length} to check · sorted by last verified, oldest first.</p>
+        <p>{queue.length} listings to keep honest · sorted by last verified, oldest first.</p>
       </div>
 
-      {pending.length === 0 ? (
+      {visible.length === 0 ? (
         <div className="admin-empty">Queue is clear. Every listing is verified — nice work.</div>
       ) : (
-        <div className="queue-list">
-          {pending.map((item) => (
-            <article className="queue-item" key={item.id}>
-              <div className="queue-item-head">
-                <div>
-                  <h3>{item.shopName}</h3>
-                  <p className="local-name">{item.local}</p>
+        <>
+          <div className="queue-list">
+            {visible.map(({ shop, lastVerifiedAt, needs, staleDays }) => (
+              <article className="queue-item" key={shop.slug}>
+                <div className="queue-item-head">
+                  <div>
+                    <h3>{shop.name}</h3>
+                    {shop.local ? <p className="local-name">{shop.local}</p> : null}
+                  </div>
+                  <span className={needs === "New listing" ? "badge open" : "badge warn"}>{needs}</span>
                 </div>
-                <span className={item.needs === "New listing" ? "badge open" : "badge warn"}>{item.needs}</span>
-              </div>
-              <div className="queue-meta">
-                <span>{item.category}</span>
-                <span>{item.area}</span>
-                <span>Last verified {item.lastVerified}</span>
-              </div>
-              <div className="queue-item-actions">
-                <button className="admin-btn success" onClick={() => verify(item.id)}>✓ Verify now</button>
-                <button className="admin-btn ghost" onClick={() => skip(item.id)}>Skip</button>
-              </div>
-              <p className="submitted">Submitted {item.submitted}</p>
-            </article>
-          ))}
-        </div>
+                <div className="queue-meta">
+                  <span>{shop.category}</span>
+                  <span>{shop.area || "area unknown"}</span>
+                  <span>{lastVerifiedAt ? `Last verified ${staleDays}d ago` : "Never verified"}</span>
+                  {shop.phone ? null : <span className="meta-warn">No phone on record</span>}
+                </div>
+                <div className="queue-item-actions">
+                  <form action={verifyShopAction}>
+                    <input type="hidden" name="slug" value={shop.slug} />
+                    <button className="admin-btn success" type="submit">✓ Verify now</button>
+                  </form>
+                  <Link className="admin-btn ghost" href={`/admin/shops/${shop.slug}`}>Check &amp; edit</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+          {queue.length > visible.length && (
+            <p className="save-note">Showing the {visible.length} most urgent of {queue.length}. The rest follow once these are done.</p>
+          )}
+        </>
       )}
     </div>
   );

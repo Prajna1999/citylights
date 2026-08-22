@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const nav = [
   { href: "/admin", label: "Dashboard", icon: "▦" },
+  { href: "/admin/shops", label: "Shops", icon: "☰" },
   { href: "/admin/add", label: "Add shop", icon: "+" },
   { href: "/admin/verify", label: "Verify", icon: "✓" },
   { href: "/admin/reports", label: "Reports", icon: "◌" },
@@ -16,7 +17,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   return (
     <div className="admin-shell">
       <header className="admin-topbar">
-        <Link href="/admin" className="brand"><span className="brand-mark">H</span><span>haat<span className="brand-dot">.</span></span></Link>
+        <Link href="/admin" className="brand"><span className="brand-mark">ହ</span><span>haat<span className="brand-dot">.</span></span></Link>
         <span className="admin-role">Curator · Bhadrak</span>
         <Link href="/" className="admin-site-link">View site ↗</Link>
       </header>

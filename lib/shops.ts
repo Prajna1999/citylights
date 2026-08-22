@@ -1,68 +1,22 @@
-import appData from "@/data/app/establishments.app.json";
+import { allShops, getShop } from "@/lib/db";
+import { CATEGORY_ICONS, type Shop } from "@/lib/types";
 
-export type Product = { name: string; detail: string; price: string; tone: string };
+export type { Product, Shop } from "@/lib/types";
+export { telHref } from "@/lib/types";
 
-export type Shop = {
-  slug: string;
-  name: string;
-  local: string;
-  categoryId: string;
-  category: string;
-  area: string;
-  distance: string;
-  open: boolean;
-  closes: string | null;
-  statusNote?: string;
-  description: string;
-  initials: string;
-  color: string;
-  phone: string | null;
-  whatsapp: string | null;
-  verified: string | null;
-  hours: string[];
-  addressText: string;
-  coordinates: { lat: number; lng: number };
-  products: Product[];
-  source: string;
-};
-
-export const shops = appData as Shop[];
-
-const CATEGORY_ICONS: Record<string, string> = {
-  "food-groceries": "✦",
-  "restaurant-eatery": "☕",
-  "sweets-bakery": "◍",
-  "fashion-garment": "◌",
-  tailoring: "✂",
-  "home-living": "⌂",
-  "electronics-mobile": "▤",
-  pharmacy: "+",
-  clinic: "⚕",
-  hospital: "⚕",
-  "gym-fitness": "▥",
-  jewellery: "◆",
-  stationery: "✎",
-  services: "↗",
-  hospitality: "☗",
-  education: "✎",
-  religious: "☸",
-  transport: "➤",
-  "bank-finance": "₹",
-};
-
-export const shopCategories = Object.entries(
-  shops.reduce<Record<string, { icon: string; count: number }>>((acc, shop) => {
-    const entry = acc[shop.category] || { icon: CATEGORY_ICONS[shop.categoryId] ?? "↗", count: 0 };
-    entry.count += 1;
-    acc[shop.category] = entry;
-    return acc;
-  }, {}),
-).map(([name, meta]) => ({ name, icon: meta.icon, count: meta.count }));
-
-export function getShop(slug: string) {
-  return shops.find((shop) => shop.slug === slug);
+export function shops(): Shop[] {
+  return allShops();
 }
 
-export function telHref(phone: string | null) {
-  return phone ? `tel:${phone.replaceAll(" ", "")}` : null;
+export { getShop };
+
+export function shopCategories(shopsList: Shop[] = allShops()) {
+  return Object.entries(
+    shopsList.reduce<Record<string, { icon: string; count: number }>>((acc, shop) => {
+      const entry = acc[shop.category] || { icon: CATEGORY_ICONS[shop.categoryId] ?? "↗", count: 0 };
+      entry.count += 1;
+      acc[shop.category] = entry;
+      return acc;
+    }, {}),
+  ).map(([name, meta]) => ({ name, icon: meta.icon, count: meta.count }));
 }

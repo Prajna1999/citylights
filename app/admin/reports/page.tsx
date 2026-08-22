@@ -1,15 +1,17 @@
-"use client";
+import Link from "next/link";
+import { setReportStatus } from "@/lib/actions";
+import { allReports } from "@/lib/db";
+import { daysSince, formatDate } from "@/lib/types";
 
-import { useState } from "react";
-import { reportQueue, type ReportItem } from "@/lib/admin";
+export const dynamic = "force-dynamic";
 
-export default function ReportsPage() {
-  const [items, setItems] = useState<ReportItem[]>(reportQueue);
-  const [tab, setTab] = useState<"open" | "resolved">("open");
+export default async function ReportsPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
+  const { tab } = await searchParams;
+  const activeTab = tab === "resolved" ? "resolved" : "open";
 
-  const visible = items.filter((report) => (tab === "open" ? report.status === "open" : report.status === "resolved"));
-  const toggle = (id: string) =>
-    setItems((list) => list.map((report) => report.id === id ? { ...report, status: report.status === "open" ? "resolved" : "open" } : report));
+  const reports = allReports();
+  const open = reports.filter((report) => report.status === "open");
+  const visible = activeTab === "open" ? open : reports.filter((report) => report.status === "resolved");
 
   return (
     <div>
@@ -19,8 +21,8 @@ export default function ReportsPage() {
       </div>
 
       <div className="filter-tabs" role="tablist" aria-label="Filter reports">
-        <button className={tab === "open" ? "active" : ""} onClick={() => setTab("open")}>Open ({items.filter((r) => r.status === "open").length})</button>
-        <button className={tab === "resolved" ? "active" : ""} onClick={() => setTab("resolved")}>Resolved</button>
+        <Link role="tab" aria-selected={activeTab === "open"} className={activeTab === "open" ? "active" : ""} href="/admin/reports">Open ({open.length})</Link>
+        <Link role="tab" aria-selected={activeTab === "resolved"} className={activeTab === "resolved" ? "active" : ""} href="/admin/reports?tab=resolved">Resolved ({reports.length - open.length})</Link>
       </div>
 
       {visible.length === 0 ? (
@@ -35,18 +37,24 @@ export default function ReportsPage() {
               </div>
               <div className="queue-item-body">{report.body}</div>
               <div className="queue-meta">
-                <span>{report.createdAt}</span>
+                <span>{formatDate(report.createdAt)} · {daysSince(report.createdAt) <= 0 ? "today" : `${daysSince(report.createdAt)}d ago`}</span>
                 <span>Reporter {report.phone}</span>
               </div>
               <div className="queue-item-actions">
-                <button className="admin-btn secondary" onClick={() => toggle(report.id)}>
-                  {report.status === "open" ? "✓ Mark resolved" : "Reopen"}
-                </button>
+                <form action={setReportStatus}>
+                  <input type="hidden" name="id" value={report.id} />
+                  <input type="hidden" name="next" value={report.status === "open" ? "resolved" : "open"} />
+                  <button className="admin-btn secondary" type="submit">
+                    {report.status === "open" ? "✓ Mark resolved" : "Reopen"}
+                  </button>
+                </form>
               </div>
             </article>
           ))}
         </div>
       )}
+
+      <p className="save-note">Tip: fix the listing from the <Link href="/admin/shops">registry</Link>, then mark the report resolved.</p>
     </div>
   );
 }

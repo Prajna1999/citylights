@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { shopCategories } from "@/lib/shops";
+import { createShop } from "@/lib/actions";
+import { CATEGORIES } from "@/lib/categories";
 
 const STORAGE_KEY = "haat-admin-draft-v1";
 const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -69,6 +70,8 @@ export default function AddShopPage() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [savedFlash, setSavedFlash] = useState(false);
+  const [error, setError] = useState("");
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     try {
@@ -122,12 +125,35 @@ export default function AddShopPage() {
     window.setTimeout(() => setSavedFlash(false), 1800);
   };
 
-  const submit = () => {
-    setSubmitted(true);
+  const submit = async () => {
+    setSaving(true);
+    setError("");
     try {
-      localStorage.removeItem(STORAGE_KEY);
+      const formData = new FormData();
+      formData.set("name", draft.name);
+      formData.set("local", draft.nameLocal);
+      formData.set("owner", draft.owner);
+      formData.set("category", draft.category);
+      formData.set("phone", draft.phone);
+      formData.set("whatsapp", draft.whatsapp);
+      formData.set("lat", draft.lat);
+      formData.set("lng", draft.lng);
+      draft.dayRows.forEach((row, index) => formData.set(`day-${index}`, row));
+      const result = await createShop(formData);
+      if (result.ok) {
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch {
+          /* ignore */
+        }
+        setSubmitted(true);
+      } else {
+        setError(result.message);
+      }
     } catch {
-      /* ignore */
+      setError("Could not reach the server. Your draft is safe on this phone — try again when you have signal.");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -139,10 +165,10 @@ export default function AddShopPage() {
         <div className="success-screen">
           <div className="success-mark">✓</div>
           <h1>Shop saved to the registry</h1>
-          <p>This is a mock save — the listing was stored locally on this device only. In production it would sync to the registry.</p>
+          <p>The listing is live in the registry and queued for verification. The public site shows it on the next visit.</p>
           <div className="success-actions">
             <button className="admin-btn primary" onClick={() => { setSubmitted(false); setDraft(EMPTY_DRAFT); setStep(0); }}>Add another shop</button>
-            <a className="admin-btn secondary" href="/admin">Back to dashboard</a>
+            <a className="admin-btn secondary" href="/admin/verify">Open verification queue</a>
           </div>
         </div>
       </div>
@@ -187,8 +213,8 @@ export default function AddShopPage() {
 
           {step === 1 && (
             <div className="category-picker">
-              {shopCategories.map((category) => (
-                <button key={category.name} className={draft.category === category.name ? "cat-option selected" : "cat-option"} onClick={() => set({ category: category.name })} type="button">
+              {CATEGORIES.map((category) => (
+                <button key={category.id} className={draft.category === category.name ? "cat-option selected" : "cat-option"} onClick={() => set({ category: category.name })} type="button">
                   <span className="ci">{category.icon}</span><span>{category.name}</span>
                 </button>
               ))}
@@ -278,9 +304,10 @@ export default function AddShopPage() {
           {step < STEPS.length - 1 ? (
             <button className="admin-btn primary" disabled={!canNext} onClick={() => setStep(step + 1)}>Continue</button>
           ) : (
-            <button className="admin-btn primary" onClick={submit}>Save shop</button>
+            <button className="admin-btn primary" onClick={submit} disabled={saving}>{saving ? "Saving…" : "Save shop"}</button>
           )}
         </div>
+        {error && <p className="save-note error" role="alert">{error}</p>}
         <p className="save-note">✓ Draft saved to this device · syncs when you are back online</p>
       </div>
     </div>

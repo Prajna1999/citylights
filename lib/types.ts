@@ -28,6 +28,7 @@ export type Shop = {
   coordinates: { lat: number; lng: number };
   products: Product[];
   source: string;
+  photoUrl?: string | null;
 };
 
 export type ReportItem = {

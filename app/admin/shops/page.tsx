@@ -62,8 +62,9 @@ export default async function AdminShopsPage({ searchParams }: { searchParams: P
     page: typeof resolved.page === "string" ? resolved.page : "1",
   };
 
+  const allShopsList = await shops();
   const normalized = params.q.toLowerCase();
-  const filtered = shops().filter((shop) => {
+  const filtered = allShopsList.filter((shop) => {
     if (params.category && shop.categoryId !== params.category) return false;
     if (params.status && (shop.status ?? "active") !== params.status) return false;
     if (params.verified && verifyBucket(shop) !== params.verified) return false;
@@ -79,7 +80,7 @@ export default async function AdminShopsPage({ searchParams }: { searchParams: P
     <div>
       <div className="admin-head">
         <h1>Registry</h1>
-        <p>{filtered.length} of {shops().length} listings{filtered.length !== shops().length ? " match your filters" : ""}.</p>
+        <p>{filtered.length} of {allShopsList.length} listings{filtered.length !== allShopsList.length ? " match your filters" : ""}.</p>
       </div>
 
       <form className="admin-toolbar" method="get" action="/admin/shops">

@@ -9,7 +9,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Prom
   const { tab } = await searchParams;
   const activeTab = tab === "resolved" ? "resolved" : "open";
 
-  const reports = allReports();
+  const reports = await allReports();
   const open = reports.filter((report) => report.status === "open");
   const visible = activeTab === "open" ? open : reports.filter((report) => report.status === "resolved");
 

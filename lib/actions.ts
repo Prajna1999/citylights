@@ -38,7 +38,8 @@ export type FormState = { ok: boolean; message: string };
 export async function createShop(formData: FormData): Promise<FormState> {
   const name = str(formData, "name");
   if (!name) return { ok: false, message: "Shop name is required." };
-  if (getShop(slugify(name))) return { ok: false, message: `A shop called “${name}” is already in the registry.` };
+  const slugBase = slugify(name);
+  if (await getShop(slugBase)) return { ok: false, message: `A shop called “${name}” is already in the registry.` };
 
   const phone = str(formData, "phone");
   if (phone.replaceAll(/\D/g, "").length < 6) return { ok: false, message: "Add a valid phone number — at least 6 digits." };
@@ -57,7 +58,7 @@ export async function createShop(formData: FormData): Promise<FormState> {
   const whatsappRaw = str(formData, "whatsapp");
 
   const shop: Shop = {
-    slug: uniqueSlug(slugify(name)),
+    slug: await uniqueSlug(slugBase),
     name,
     local: str(formData, "local"),
     categoryId: category.id,
@@ -81,9 +82,10 @@ export async function createShop(formData: FormData): Promise<FormState> {
     coordinates: { lat, lng },
     products: [],
     source: "Added by curator",
+    photoUrl: str(formData, "photoUrl") || null,
   };
 
-  appendShop(shop);
+  await appendShop(shop);
   refresh();
   return { ok: true, message: shop.slug };
 }
@@ -91,7 +93,7 @@ export async function createShop(formData: FormData): Promise<FormState> {
 /** Plain <form> action for the shop editor. Redirects back with ?saved / ?error feedback. */
 export async function updateShopAction(formData: FormData): Promise<void> {
   const slug = str(formData, "slug");
-  const existing = getShop(slug);
+  const existing = await getShop(slug);
   if (!existing) redirect(`/admin/shops/${slug}?error=${encodeURIComponent("This shop is no longer in the registry.")}`);
 
   const name = str(formData, "name");
@@ -128,6 +130,7 @@ export async function updateShopAction(formData: FormData): Promise<void> {
       lng: Number.isNaN(lng) ? existing.coordinates.lng : lng,
     },
     open: status === "active" ? existing.open : false,
+    photoUrl: str(formData, "photoUrl") || null,
   });
 
   refresh();
@@ -136,7 +139,7 @@ export async function updateShopAction(formData: FormData): Promise<void> {
 
 /** Plain <form> action: stamp last verified now. */
 export async function verifyShopAction(formData: FormData): Promise<void> {
-  verifyShopBySlug(str(formData, "slug"));
+  await verifyShopBySlug(str(formData, "slug"));
   refresh();
 }
 
@@ -144,7 +147,8 @@ export async function verifyShopAction(formData: FormData): Promise<void> {
 export async function setReportStatus(formData: FormData): Promise<void> {
   const id = str(formData, "id");
   const next = str(formData, "next") === "resolved" ? "resolved" : "open";
-  saveReports(allReports().map((report) => (report.id === id ? { ...report, status: next } : report)));
+  const reports = await allReports();
+  await saveReports(reports.map((report) => (report.id === id ? { ...report, status: next } : report)));
   refresh();
 }
 
@@ -163,7 +167,8 @@ export async function submitReport(_prev: FormState, formData: FormData): Promis
     status: "open",
     createdAt: new Date().toISOString(),
   };
-  saveReports([report, ...allReports()]);
+  const reports = await allReports();
+  await saveReports([report, ...reports]);
   refresh();
   return { ok: true, message: "Thanks — your report is in the curator queue." };
 }

@@ -7,7 +7,7 @@ export const dynamic = "force-dynamic";
 const PAGE_SIZE = 25;
 
 export default async function VerifyPage() {
-  const queue = verificationQueue();
+  const queue = await verificationQueue();
   const visible = queue.slice(0, PAGE_SIZE);
 
   return (

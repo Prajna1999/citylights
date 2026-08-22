@@ -15,7 +15,7 @@ type Draft = {
   phone: string;
   whatsapp: string;
   photoName: string;
-  photoData: string | null;
+  photoUrl: string | null;
   lat: string;
   lng: string;
   preset: string;
@@ -30,12 +30,47 @@ const EMPTY_DRAFT: Draft = {
   phone: "",
   whatsapp: "",
   photoName: "",
-  photoData: null,
+  photoUrl: null,
   lat: "",
   lng: "",
   preset: "",
   dayRows: ["Closed", "", "", "", "", "", ""],
 };
+
+async function compressImage(file: File): Promise<Blob> {
+  const dataUrl = await new Promise<string>((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.onerror = () => reject(new Error("read failed"));
+    reader.readAsDataURL(file);
+  });
+  const image = await new Promise<HTMLImageElement>((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error("decode failed"));
+    img.src = dataUrl;
+  });
+  const maxSide = 1280;
+  const scale = Math.min(1, maxSide / Math.max(image.width, image.height));
+  if (scale >= 1 && file.size < 1_500_000) return file;
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(image.width * scale);
+  canvas.height = Math.round(image.height * scale);
+  canvas.getContext("2d")?.drawImage(image, 0, 0, canvas.width, canvas.height);
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("compress failed"))), "image/jpeg", 0.82);
+  });
+}
+
+async function uploadToCloudinary(file: File): Promise<string> {
+  const blob = await compressImage(file);
+  const form = new FormData();
+  form.set("file", new File([blob], file.name.replace(/\.[^.]+$/, "") + ".jpg", { type: blob.type || "image/jpeg" }));
+  const response = await fetch("/api/upload", { method: "POST", body: form });
+  const data = (await response.json()) as { ok: boolean; url?: string; error?: string };
+  if (!data.ok || !data.url) throw new Error(data.error || "Upload failed");
+  return data.url;
+}
 
 const PRESETS: { id: string; label: string; detail: string; rows: string[] }[] = [
   { id: "market", label: "Market hours", detail: "9 AM – 1 PM · 4 PM – 8 PM", rows: ["Closed", "9 AM – 1 PM, 4 PM – 8 PM", "9 AM – 1 PM, 4 PM – 8 PM", "9 AM – 1 PM, 4 PM – 8 PM", "9 AM – 1 PM, 4 PM – 8 PM", "9 AM – 1 PM, 4 PM – 8 PM", "9 AM – 1 PM, 4 PM – 8 PM"] },
@@ -72,6 +107,9 @@ export default function AddShopPage() {
   const [savedFlash, setSavedFlash] = useState(false);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
+  const [photoUploading, setPhotoUploading] = useState(false);
+  const [photoError, setPhotoError] = useState("");
+  const [localPreview, setLocalPreview] = useState<string | null>(null);
 
   useEffect(() => {
     try {
@@ -98,14 +136,21 @@ export default function AddShopPage() {
 
   const useMyLocation = () => set({ lat: "21.0600", lng: "86.5000" });
 
-  const onPhoto = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onPhoto = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      set({ photoData: String(reader.result), photoName: file.name });
-    };
-    reader.readAsDataURL(file);
+    setPhotoError("");
+    setLocalPreview(URL.createObjectURL(file));
+    setPhotoUploading(true);
+    try {
+      const url = await uploadToCloudinary(file);
+      set({ photoUrl: url, photoName: file.name });
+    } catch (uploadError) {
+      setPhotoError(uploadError instanceof Error ? uploadError.message : "Upload failed — check signal and retry.");
+    } finally {
+      setPhotoUploading(false);
+      event.target.value = "";
+    }
   };
 
   const applyPreset = (id: string) => {
@@ -138,6 +183,7 @@ export default function AddShopPage() {
       formData.set("whatsapp", draft.whatsapp);
       formData.set("lat", draft.lat);
       formData.set("lng", draft.lng);
+      formData.set("photoUrl", draft.photoUrl ?? "");
       draft.dayRows.forEach((row, index) => formData.set(`day-${index}`, row));
       const result = await createShop(formData);
       if (result.ok) {
@@ -167,7 +213,7 @@ export default function AddShopPage() {
           <h1>Shop saved to the registry</h1>
           <p>The listing is live in the registry and queued for verification. The public site shows it on the next visit.</p>
           <div className="success-actions">
-            <button className="admin-btn primary" onClick={() => { setSubmitted(false); setDraft(EMPTY_DRAFT); setStep(0); }}>Add another shop</button>
+            <button className="admin-btn primary" onClick={() => { setSubmitted(false); setDraft(EMPTY_DRAFT); setStep(0); setLocalPreview(null); setPhotoError(""); }}>Add another shop</button>
             <a className="admin-btn secondary" href="/admin/verify">Open verification queue</a>
           </div>
         </div>
@@ -237,10 +283,18 @@ export default function AddShopPage() {
           {step === 3 && (
             <div className="photo-upload">
               <label className="photo-preview">
-                {draft.photoData ? <img src={draft.photoData} alt="Storefront preview" /> : <span className="photo-placeholder">+ Take or choose a storefront photo<br /><small>compressed on this phone before upload</small></span>}
-                <input type="file" accept="image/*" capture="environment" onChange={onPhoto} />
+                {draft.photoUrl || localPreview ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img src={draft.photoUrl ?? localPreview ?? ""} alt="Storefront preview" className={photoUploading ? "uploading" : ""} />
+                ) : (
+                  <span className="photo-placeholder">+ Take or choose a storefront photo<br /><small>compressed on this phone before upload</small></span>
+                )}
+                <input type="file" accept="image/*" capture="environment" onChange={onPhoto} disabled={photoUploading} />
               </label>
-              {draft.photoName && <p className="hint">Selected: {draft.photoName}</p>}
+              {photoUploading && <p className="hint">Uploading photo…</p>}
+              {draft.photoUrl && !photoUploading && <p className="hint ok">✓ Photo uploaded to Cloudinary</p>}
+              {!draft.photoUrl && draft.photoName && !photoUploading && <p className="hint">Selected: {draft.photoName} — not uploaded yet</p>}
+              {photoError && <p className="hint error" role="alert">{photoError} You can retry from this step; the rest of the draft is safe.</p>}
             </div>
           )}
 
@@ -290,7 +344,7 @@ export default function AddShopPage() {
               <div className="review-row"><span>Category</span><strong>{draft.category || "—"}</strong></div>
               <div className="review-row"><span>Phone</span><strong>{draft.phone || "—"}</strong></div>
               <div className="review-row"><span>WhatsApp</span><strong>{draft.whatsapp || "—"}</strong></div>
-              <div className="review-row"><span>Photo</span><strong>{draft.photoName || "Not added"}</strong></div>
+              <div className="review-row"><span>Photo</span><strong>{draft.photoUrl ? "✓ Uploaded" : draft.photoName ? "Pending upload" : "Not added"}</strong></div>
               <div className="review-row"><span>Location</span><strong>{draft.lat || "—"}, {draft.lng || "—"}</strong></div>
               <div className="review-row"><span>Timings</span><strong>{draft.dayRows[0]} · …</strong></div>
             </div>

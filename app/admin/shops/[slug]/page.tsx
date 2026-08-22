@@ -21,7 +21,7 @@ export default async function EditShopPage({
 }) {
   const { slug } = await params;
   const resolved = await searchParams;
-  const shop = getShop(slug);
+  const shop = await getShop(slug);
   if (!shop) notFound();
 
   const saved = resolved.saved === "1";
@@ -74,6 +74,7 @@ export default async function EditShopPage({
             </div>
           </div>
           <div className="field"><label htmlFor="f-description">Description</label><textarea id="f-description" name="description" rows={3} defaultValue={shop.description} /></div>
+          <div className="field"><label htmlFor="f-photo">Photo URL <span className="optional">Cloudinary</span></label><input id="f-photo" name="photoUrl" defaultValue={shop.photoUrl ?? ""} placeholder="https://res.cloudinary.com/…" autoComplete="off" /></div>
         </fieldset>
 
         <fieldset className="field-group">

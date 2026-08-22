@@ -5,10 +5,10 @@ import { daysSince } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
-export default function AdminDashboard() {
-  const all = shops();
-  const queue = verificationQueue();
-  const reports = allReports();
+export default async function AdminDashboard() {
+  const all = await shops();
+  const queue = await verificationQueue();
+  const reports = await allReports();
 
   const active = all.filter((shop) => (shop.status ?? "active") === "active").length;
   const tempClosed = all.filter((shop) => shop.status === "temporarily_closed").length;

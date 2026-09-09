@@ -2,6 +2,8 @@ export type Product = { name: string; detail: string; price: string; tone: strin
 
 export type ShopStatus = "active" | "temporarily_closed" | "permanently_closed";
 
+export type ApprovalStatus = "pending" | "approved";
+
 export type Shop = {
   slug: string;
   name: string;
@@ -18,10 +20,17 @@ export type Shop = {
   color: string;
   phone: string | null;
   whatsapp: string | null;
+  instagram?: string | null;
+  facebook?: string | null;
+  website?: string | null;
   verified: string | null;
   lastVerifiedAt?: string | null;
   status?: ShopStatus;
   owner?: string;
+  ownerId?: string;
+  approvalStatus?: ApprovalStatus;
+  offlineBooking?: boolean;
+  bookedDates?: string[];
   landmark?: string;
   hours: string[];
   addressText: string;
@@ -29,7 +38,32 @@ export type Shop = {
   products: Product[];
   source: string;
   photoUrl?: string | null;
+  photoUrls?: string[];
+  keywords?: string[];
 };
+
+/** Up to 3 storefront photo URLs for a shop, newest field first, falling back to the legacy single photoUrl. */
+export function shopPhotos(shop: Pick<Shop, "photoUrl" | "photoUrls">): string[] {
+  if (shop.photoUrls && shop.photoUrls.length > 0) return shop.photoUrls.slice(0, 3);
+  return shop.photoUrl ? [shop.photoUrl] : [];
+}
+
+export type UserRole = "admin" | "superadmin";
+
+export type User = {
+  id: string;
+  businessName: string;
+  email: string;
+  passwordHash: string;
+  role: UserRole;
+  createdAt: string;
+};
+
+export type AuthUser = Omit<User, "passwordHash">;
+
+export function isShopPending(shop: Pick<Shop, "approvalStatus">) {
+  return shop.approvalStatus === "pending";
+}
 
 export type ReportItem = {
   id: string;
@@ -49,6 +83,13 @@ export type Category = {
 };
 
 export const SHOP_COLORS = ["saffron", "rose", "teal", "blue", "indigo", "yellow"] as const;
+
+/** Categories where customers typically book for a specific event date. */
+export const EVENT_CATEGORY_IDS = ["dj", "mandap", "catering", "light-tent-house"] as const;
+
+export function takesEventDateBookings(shop: Pick<Shop, "categoryId" | "offlineBooking">) {
+  return (EVENT_CATEGORY_IDS as readonly string[]).includes(shop.categoryId) && !shop.offlineBooking;
+}
 
 export const CATEGORY_ICONS: Record<string, string> = {
   "food-groceries": "✦",
@@ -70,6 +111,17 @@ export const CATEGORY_ICONS: Record<string, string> = {
   religious: "☸",
   transport: "➤",
   "bank-finance": "₹",
+  mandap: "⛩",
+  dj: "♫",
+  catering: "◒",
+  "light-tent-house": "▲",
+  electrician: "⚡",
+  "ac-service": "❄",
+  "water-purifier-service": "≈",
+  "tuition-tutor": "✎",
+  "land-broker": "◫",
+  "meat-fish": "◈",
+  "car-wash": "❋",
 };
 
 export const TOWN_CENTRE = { lat: 21.06, lng: 86.5 };
@@ -93,6 +145,24 @@ export function shopInitials(name: string) {
   const words = name.split(/\s+/).filter((word) => /[a-zA-Z0-9]/.test(word));
   const letters = words.slice(0, 2).map((word) => word[0]?.toUpperCase() ?? "");
   return (letters.join("") || "H").slice(0, 2);
+}
+
+/** Parses a newline-separated list of YYYY-MM-DD dates into a sorted, de-duplicated array. */
+export function parseBookedDates(raw: string): string[] {
+  const dates = raw
+    .split("\n")
+    .map((line) => line.trim())
+    .filter((line) => /^\d{4}-\d{2}-\d{2}$/.test(line));
+  return Array.from(new Set(dates)).sort();
+}
+
+/** Parses a newline-separated list of photo URLs, capped at 3. */
+export function parsePhotoUrls(raw: string): string[] {
+  return Array.from(new Set(raw.split("\n").map((line) => line.trim()).filter(Boolean))).slice(0, 3);
+}
+
+export function parseKeywords(raw: string): string[] {
+  return Array.from(new Set(raw.split(",").map((keyword) => keyword.trim().toLowerCase()).filter(Boolean)));
 }
 
 export function slugify(name: string) {

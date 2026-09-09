@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { setReportStatus } from "@/lib/actions";
+import { requireRole } from "@/lib/auth";
 import { allReports } from "@/lib/db";
 import { daysSince, formatDate } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
 export default async function ReportsPage({ searchParams }: { searchParams: Promise<{ tab?: string }> }) {
+  await requireRole("superadmin");
   const { tab } = await searchParams;
   const activeTab = tab === "resolved" ? "resolved" : "open";
 

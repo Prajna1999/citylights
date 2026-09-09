@@ -17,5 +17,16 @@
   { "id": "religious", "name": "Religious places", "slug": "religious", "icon": "☸", "sort_order": 16 },
   { "id": "transport", "name": "Transport & travel", "slug": "transport", "icon": "➤", "sort_order": 17 },
   { "id": "bank-finance", "name": "Bank & finance", "slug": "bank-finance", "icon": "₹", "sort_order": 18 },
-  { "id": "hospital", "name": "Hospitals", "slug": "hospital", "icon": "⚕", "sort_order": 19 }
+  { "id": "hospital", "name": "Hospitals", "slug": "hospital", "icon": "⚕", "sort_order": 19 },
+  { "id": "mandap", "name": "Mandap", "slug": "mandap", "icon": "⛩", "sort_order": 20 },
+  { "id": "dj", "name": "DJ", "slug": "dj", "icon": "♫", "sort_order": 21 },
+  { "id": "catering", "name": "Catering", "slug": "catering", "icon": "◒", "sort_order": 22 },
+  { "id": "light-tent-house", "name": "Light & tent house", "slug": "light-tent-house", "icon": "▲", "sort_order": 23 },
+  { "id": "electrician", "name": "Electrician", "slug": "electrician", "icon": "⚡", "sort_order": 24 },
+  { "id": "ac-service", "name": "AC service & repair", "slug": "ac-service", "icon": "❄", "sort_order": 25 },
+  { "id": "water-purifier-service", "name": "Water purifier service", "slug": "water-purifier-service", "icon": "≈", "sort_order": 26 },
+  { "id": "tuition-tutor", "name": "Tuition & tutors", "slug": "tuition-tutor", "icon": "✎", "sort_order": 27 },
+  { "id": "land-broker", "name": "Land broker", "slug": "land-broker", "icon": "◫", "sort_order": 28 },
+  { "id": "meat-fish", "name": "Chicken, mutton & fish", "slug": "meat-fish", "icon": "◈", "sort_order": 29 },
+  { "id": "car-wash", "name": "Car wash", "slug": "car-wash", "icon": "❋", "sort_order": 30 }
 ]

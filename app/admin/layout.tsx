@@ -1,37 +1,27 @@
-"use client";
-
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import AdminNav from "@/components/AdminNav";
+import { requireUser } from "@/lib/auth";
+import { logout } from "@/lib/auth-actions";
 
-const nav = [
-  { href: "/admin", label: "Dashboard", icon: "▦" },
-  { href: "/admin/shops", label: "Shops", icon: "☰" },
-  { href: "/admin/add", label: "Add shop", icon: "+" },
-  { href: "/admin/verify", label: "Verify", icon: "✓" },
-  { href: "/admin/reports", label: "Reports", icon: "◌" },
-];
-
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const user = await requireUser();
 
   return (
     <div className="admin-shell">
       <header className="admin-topbar">
         <Link href="/admin" className="brand"><span className="brand-mark">ହ</span><span>haat<span className="brand-dot">.</span></span></Link>
-        <span className="admin-role">Curator · Bhadrak</span>
-        <Link href="/" className="admin-site-link">View site ↗</Link>
+        <span className="admin-role">{user.role === "superadmin" ? "Super admin" : user.businessName}</span>
+        <span className="admin-topbar-actions">
+          <Link href="/" className="admin-site-link">View site ↗</Link>
+          <form action={logout} className="topbar-logout-mobile">
+            <button type="submit" className="admin-site-link admin-logout-btn">Log out</button>
+          </form>
+        </span>
       </header>
-      <nav className="admin-nav" aria-label="Admin">
-        {nav.map((item) => {
-          const active = pathname === item.href || (item.href !== "/admin" && pathname.startsWith(item.href));
-          return (
-            <Link key={item.href} href={item.href} className={active ? "admin-nav-item active" : "admin-nav-item"} aria-current={active ? "page" : undefined}>
-              <span className="an-icon">{item.icon}</span><span className="an-label">{item.label}</span>
-            </Link>
-          );
-        })}
-      </nav>
-      <main className="admin-main">{children}</main>
+      <div className="admin-body">
+        <AdminNav role={user.role} logout={logout} />
+        <main className="admin-main">{children}</main>
+      </div>
     </div>
   );
 }

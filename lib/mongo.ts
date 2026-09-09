@@ -5,6 +5,7 @@ const uri = process.env.MONGODB_URI;
 export const DB_NAME = process.env.MONGODB_DB || "haat";
 export const SHOPS_COLLECTION = "shops";
 export const REPORTS_COLLECTION = "reports";
+export const USERS_COLLECTION = "users";
 
 declare global {
   var __haatMongoClientPromise: Promise<MongoClient> | undefined;
@@ -28,5 +29,6 @@ export async function ensureIndexes(client: MongoClient) {
   const db = client.db(DB_NAME);
   await db.collection(SHOPS_COLLECTION).createIndex({ slug: 1 }, { unique: true });
   await db.collection(REPORTS_COLLECTION).createIndex({ id: 1 }, { unique: true });
+  await db.collection(USERS_COLLECTION).createIndex({ email: 1 }, { unique: true });
   indexed = true;
 }

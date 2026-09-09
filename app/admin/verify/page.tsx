@@ -1,20 +1,22 @@
 import Link from "next/link";
 import { verifyShopAction } from "@/lib/actions";
-import { verificationQueue } from "@/lib/db";
+import { requireRole } from "@/lib/auth";
+import { needsVerification, verificationQueue } from "@/lib/db";
 
 export const dynamic = "force-dynamic";
 
 const PAGE_SIZE = 25;
 
 export default async function VerifyPage() {
-  const queue = await verificationQueue();
-  const visible = queue.slice(0, PAGE_SIZE);
+  await requireRole("superadmin");
+  const due = (await verificationQueue()).filter(needsVerification);
+  const visible = due.slice(0, PAGE_SIZE);
 
   return (
     <div>
       <div className="admin-head">
         <h1>Verification queue</h1>
-        <p>{queue.length} listings to keep honest · sorted by last verified, oldest first.</p>
+        <p>{due.length} listings to keep honest · sorted by last verified, oldest first.</p>
       </div>
 
       {visible.length === 0 ? (
@@ -47,8 +49,8 @@ export default async function VerifyPage() {
               </article>
             ))}
           </div>
-          {queue.length > visible.length && (
-            <p className="save-note">Showing the {visible.length} most urgent of {queue.length}. The rest follow once these are done.</p>
+          {due.length > visible.length && (
+            <p className="save-note">Showing the {visible.length} most urgent of {due.length}. The rest follow once these are done.</p>
           )}
         </>
       )}

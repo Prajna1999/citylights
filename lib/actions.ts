@@ -2,9 +2,11 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { requireRole, requireUser } from "@/lib/auth";
 import {
   allReports,
   appendShop,
+  approveShop,
   getShop,
   saveReports,
   saveShop,
@@ -14,6 +16,9 @@ import {
 import { CATEGORIES } from "@/lib/categories";
 import {
   haversineKm,
+  parseBookedDates,
+  parseKeywords,
+  parsePhotoUrls,
   SHOP_COLORS,
   shopInitials,
   slugify,
@@ -36,6 +41,7 @@ export type FormState = { ok: boolean; message: string };
 
 /** Called programmatically from the add-shop wizard (client). Returns a result object. */
 export async function createShop(formData: FormData): Promise<FormState> {
+  const user = await requireUser();
   const name = str(formData, "name");
   if (!name) return { ok: false, message: "Shop name is required." };
   const slugBase = slugify(name);
@@ -56,6 +62,7 @@ export async function createShop(formData: FormData): Promise<FormState> {
     .map((row, index) => (row ? `${DAY_NAMES[index]}: ${row}` : ""))
     .filter(Boolean);
   const whatsappRaw = str(formData, "whatsapp");
+  const photoUrls = parsePhotoUrls(str(formData, "photoUrls"));
 
   const shop: Shop = {
     slug: await uniqueSlug(slugBase),
@@ -72,17 +79,26 @@ export async function createShop(formData: FormData): Promise<FormState> {
     color: SHOP_COLORS[name.length % SHOP_COLORS.length],
     phone: phone || null,
     whatsapp: whatsappRaw || null,
+    instagram: str(formData, "instagram") || null,
+    facebook: str(formData, "facebook") || null,
+    website: str(formData, "website") || null,
     verified: null,
     lastVerifiedAt: null,
     status: "active",
     owner: str(formData, "owner") || undefined,
+    ownerId: user.id,
+    approvalStatus: user.role === "superadmin" ? "approved" : "pending",
     landmark: str(formData, "landmark") || undefined,
+    offlineBooking: formData.get("offlineBooking") === "on",
+    bookedDates: parseBookedDates(str(formData, "bookedDates")),
     hours,
     addressText: str(formData, "address"),
     coordinates: { lat, lng },
     products: [],
-    source: "Added by curator",
-    photoUrl: str(formData, "photoUrl") || null,
+    source: user.role === "superadmin" ? "Added by curator" : "Submitted by owner",
+    photoUrl: photoUrls[0] ?? null,
+    photoUrls,
+    keywords: parseKeywords(str(formData, "keywords")),
   };
 
   await appendShop(shop);
@@ -92,9 +108,11 @@ export async function createShop(formData: FormData): Promise<FormState> {
 
 /** Plain <form> action for the shop editor. Redirects back with ?saved / ?error feedback. */
 export async function updateShopAction(formData: FormData): Promise<void> {
+  const user = await requireUser();
   const slug = str(formData, "slug");
   const existing = await getShop(slug);
   if (!existing) redirect(`/admin/shops/${slug}?error=${encodeURIComponent("This shop is no longer in the registry.")}`);
+  if (user.role !== "superadmin" && existing.ownerId !== user.id) redirect("/admin");
 
   const name = str(formData, "name");
   if (!name) redirect(`/admin/shops/${slug}?error=${encodeURIComponent("Shop name is required.")}`);
@@ -107,7 +125,7 @@ export async function updateShopAction(formData: FormData): Promise<void> {
     name: existing.category,
   };
 
-  saveShop({
+  await saveShop({
     ...existing,
     name,
     local: str(formData, "local"),
@@ -115,10 +133,15 @@ export async function updateShopAction(formData: FormData): Promise<void> {
     category: category.name,
     owner: str(formData, "owner") || undefined,
     landmark: str(formData, "landmark") || undefined,
+    offlineBooking: formData.get("offlineBooking") === "on",
+    bookedDates: parseBookedDates(str(formData, "bookedDates")),
     area: str(formData, "area") || existing.area,
     description: str(formData, "description"),
     phone: str(formData, "phone") || null,
     whatsapp: str(formData, "whatsapp") || null,
+    instagram: str(formData, "instagram") || null,
+    facebook: str(formData, "facebook") || null,
+    website: str(formData, "website") || null,
     addressText: str(formData, "address"),
     status,
     hours: str(formData, "hours")
@@ -130,7 +153,9 @@ export async function updateShopAction(formData: FormData): Promise<void> {
       lng: Number.isNaN(lng) ? existing.coordinates.lng : lng,
     },
     open: status === "active" ? existing.open : false,
-    photoUrl: str(formData, "photoUrl") || null,
+    photoUrl: parsePhotoUrls(str(formData, "photoUrls"))[0] ?? null,
+    photoUrls: parsePhotoUrls(str(formData, "photoUrls")),
+    keywords: parseKeywords(str(formData, "keywords")),
   });
 
   refresh();
@@ -139,12 +164,21 @@ export async function updateShopAction(formData: FormData): Promise<void> {
 
 /** Plain <form> action: stamp last verified now. */
 export async function verifyShopAction(formData: FormData): Promise<void> {
+  await requireRole("superadmin");
   await verifyShopBySlug(str(formData, "slug"));
+  refresh();
+}
+
+/** Plain <form> action: approve a pending business so it goes live on the public site. */
+export async function approveShopAction(formData: FormData): Promise<void> {
+  await requireRole("superadmin");
+  await approveShop(str(formData, "slug"));
   refresh();
 }
 
 /** Plain <form> action: resolve or reopen a report. */
 export async function setReportStatus(formData: FormData): Promise<void> {
+  await requireRole("superadmin");
   const id = str(formData, "id");
   const next = str(formData, "next") === "resolved" ? "resolved" : "open";
   const reports = await allReports();

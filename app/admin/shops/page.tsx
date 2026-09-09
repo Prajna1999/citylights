@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { CATEGORIES } from "@/lib/db";
-import { shops } from "@/lib/shops";
+import { requireRole } from "@/lib/auth";
+import { CATEGORIES, allShops } from "@/lib/db";
 import type { Shop } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
@@ -53,6 +53,7 @@ function buildQuery(params: Record<string, string>, overrides: Record<string, st
 }
 
 export default async function AdminShopsPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
+  await requireRole("superadmin");
   const resolved = await searchParams;
   const params = {
     q: typeof resolved.q === "string" ? resolved.q : "",
@@ -62,7 +63,7 @@ export default async function AdminShopsPage({ searchParams }: { searchParams: P
     page: typeof resolved.page === "string" ? resolved.page : "1",
   };
 
-  const allShopsList = await shops();
+  const allShopsList = await allShops();
   const normalized = params.q.toLowerCase();
   const filtered = allShopsList.filter((shop) => {
     if (params.category && shop.categoryId !== params.category) return false;
